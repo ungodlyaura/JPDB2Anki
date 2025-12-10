@@ -22,7 +22,7 @@ PRESET_MAX_RESULTS = None             # int, 0 = all
 # JPDB -> Anki : Vocabulary Exporter
 # Author: ungodlyaura
 # Description: Export vocabulary from a JPDB deck to an Anki-compatible CSV file.
-# Usage: with python run JPDB2Anki.py
+# Usage: with python run JPDB2Anki.py needs 'requests' library (will attempt to install if missing using pip)
 # Note: Fill in presets at the top of the script to skip prompts. Results are ordered by occurrences in deck (for in-built decks).
 # Date: 2025-12-10
 #--------------------------------
@@ -48,7 +48,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-
+import os
+try:
+    import requests
+except ImportError:
+    print("Trying to install requests")
+    os.system('python -m pip install requests')
 import requests
 import sys
 import csv
